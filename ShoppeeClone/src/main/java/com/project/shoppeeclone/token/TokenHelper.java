@@ -21,7 +21,7 @@ public class TokenHelper {
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
     }
-    private static Long getUserIdFromToken(String accessToken){
+    public static Long getUserIdFromToken(String accessToken){
         String token = accessToken.substring(7);
         Claims claims = Jwts.parser()
                 .setSigningKey(SECRET_KEY)
