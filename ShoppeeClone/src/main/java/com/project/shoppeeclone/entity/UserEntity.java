@@ -1,5 +1,6 @@
 package com.project.shoppeeclone.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +26,7 @@ public class UserEntity {
     @Column(name = "fullname")
     private String fullName;
     private String image;
-    private LocalDateTime birthday;
+    private OffsetDateTime birthday;
     private String gender;
     private String email;
     private String phone;

@@ -1,4 +1,4 @@
-package com.project.shoppeeclone.dto;
+package com.project.shoppeeclone.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
