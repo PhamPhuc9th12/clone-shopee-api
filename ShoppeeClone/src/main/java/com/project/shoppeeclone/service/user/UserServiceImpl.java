@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -67,9 +65,20 @@ public class UserServiceImpl implements UserService {
         );
         userMapper.updateUserInformation(userEntity,updateUserRequest);
         userEntity.setBirthday(OffsetDateTime.parse(updateUserRequest.getBirthdayString()));
-
         userEntity.setImage(cloudinaryHelper.uploadFile(multipartFile));
         userRepository.save(userEntity);
     }
 
+    @Override
+    @Transactional
+    public String changePassword(String accessToken, String newPassword){
+        UserEntity userEntity = userRepository.findById(TokenHelper.getUserIdFromToken(accessToken)).orElseThrow(
+                () -> new RuntimeException(Common.USER_NOT_FOUND)
+        );
+        String hashedNewPassword = BCrypt.hashpw(newPassword,BCrypt.gensalt());
+        userEntity.setPassword(hashedNewPassword);
+        userRepository.save(userEntity);
+        return TokenHelper.generateToken(userEntity);
+
+    }
 }

@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @Operation(summary = "change information user")
-    @PostMapping(value = "/update", consumes = {
+    @PutMapping(value = "/update", consumes = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE
     })
     public void changeInforUser(@RequestHeader("Authorization") String accessToken,
@@ -42,5 +42,12 @@ public class UserController {
         ObjectMapper objectMapper = new ObjectMapper();
         updateUserRequest = objectMapper.readValue(updateUserRequestString, UpdateUserRequest.class);
         userService.updateInformation(accessToken,updateUserRequest,multipartFile);
+    }
+
+    @Operation(summary = "change password")
+    @PutMapping("password-change")
+    public String changePassword(@RequestHeader("Authorization") String accessToken,
+                                 @RequestParam String newPassword){
+        return userService.changePassword(accessToken,newPassword);
     }
 }
