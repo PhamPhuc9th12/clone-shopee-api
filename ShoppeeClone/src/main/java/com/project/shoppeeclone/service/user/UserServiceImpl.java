@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserName(userRequest.getUserName());
         userEntity.setPassword(hasedPassword);
         userEntity.setImage(Common.DEFAULT_IMAGE_URL);
+        userEntity.setIsShop(Common.FALSE);
         userRepository.save(userEntity);
         return TokenHelper.generateToken(userEntity);
     }

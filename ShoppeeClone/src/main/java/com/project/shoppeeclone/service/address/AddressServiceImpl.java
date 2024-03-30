@@ -1,5 +1,6 @@
 package com.project.shoppeeclone.service.address;
 
+import com.project.shoppeeclone.common.Common;
 import com.project.shoppeeclone.dto.address.AddressRequest;
 import com.project.shoppeeclone.dto.address.AddressResponse;
 import com.project.shoppeeclone.entity.AddressEntity;
@@ -26,6 +27,12 @@ public class AddressServiceImpl implements AddressService {
     @Transactional
     @Override
     public void createAddress(String accessToken, AddressRequest addressRequest) {
+        if(Boolean.TRUE.equals(addressRepository.existsByDistrictAndCountyAndCommuneAndAddressDetailAndNameReceiveAndPhoneAndTypeAndIsDefault(
+                addressRequest.getDistrict(),addressRequest.getCounty(),
+                addressRequest.getCommune(),addressRequest.getAddressDetail(),
+                addressRequest.getNameReceive(),addressRequest.getPhone(),
+                addressRequest.getType(),addressRequest.getIsDefault()
+        ))) throw new RuntimeException(Common.CAN_NOT_DO);
         Long user_id = TokenHelper.getUserIdFromToken(accessToken);
         AddressEntity addressEntity = addressMapper.getEntityFromRequest(addressRequest);
         addressEntity.setUserId(user_id);

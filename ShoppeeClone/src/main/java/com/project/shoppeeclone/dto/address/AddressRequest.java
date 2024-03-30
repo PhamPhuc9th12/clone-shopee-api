@@ -14,13 +14,13 @@ import javax.validation.constraints.Pattern;
 @Setter
 public class AddressRequest {
 
-    private String tinh;
-    private String quan;
-    private String xa;
+    private String district;
+    private String county;
+    private String commune;
     private String addressDetail;
     private String nameReceive;
     private String phone;
     @Pattern(regexp = "^(HOME|OFFICE)")
     private String type;
-    private boolean isDefault;
+    private Boolean isDefault;
 }

@@ -15,5 +15,5 @@ public class UpdateUserRequest {
     private String gender;
     private String email;
     private String phone;
-    private boolean isShop;
+    private Boolean isShop;
 }

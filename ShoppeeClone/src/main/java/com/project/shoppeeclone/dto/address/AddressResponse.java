@@ -10,9 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddressResponse {
-    private String tinh;
-    private String quan;
-    private String xa;
+    private String district;
+    private String county;
+    private String commune;
     private String addressDetail;
     private String nameReceive;
     private String phone;

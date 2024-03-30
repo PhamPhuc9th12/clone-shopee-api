@@ -13,4 +13,8 @@ public interface AddressRepository extends JpaRepository<AddressEntity, Long> {
 
     Page<AddressEntity> findAllByUserId(Long userId, Pageable pageable);
     List<AddressEntity> findAllByUserId(Long userId);
+
+    boolean existsByDistrictAndCountyAndCommuneAndAddressDetailAndNameReceiveAndPhoneAndTypeAndIsDefault(
+            String district, String county, String commune, String addressDetail,
+            String nameReceive, String phone, String type, boolean isDefault);
 }
