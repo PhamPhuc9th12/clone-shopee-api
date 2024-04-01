@@ -1,9 +1,6 @@
 package com.project.shoppeeclone.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -14,6 +11,7 @@ import java.time.OffsetDateTime;
 @Setter
 @Entity
 @Table(name = "tbl_shop")
+@Builder
 public class ShopEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +23,4 @@ public class ShopEntity {
     private Long followCount;
     private double rating;
     private Long userId;
-    private Long cateId;
 }

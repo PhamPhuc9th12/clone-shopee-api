@@ -1,6 +1,9 @@
 package com.project.shoppeeclone.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -9,14 +12,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name ="tbl_category")
-@Builder
-public class CategoryEntity {
+@Table(name = "tbl_product_type")
+public class ProductTypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String image;
-    private String description;
-    private Long shopId;
+    private Long product_id;
 }

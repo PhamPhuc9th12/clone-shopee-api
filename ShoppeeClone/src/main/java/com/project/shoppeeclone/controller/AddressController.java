@@ -2,7 +2,7 @@ package com.project.shoppeeclone.controller;
 
 import com.project.shoppeeclone.dto.address.AddressRequest;
 import com.project.shoppeeclone.dto.address.AddressResponse;
-import com.project.shoppeeclone.service.address.AddressService;
+import com.project.shoppeeclone.service.service_interface.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springdoc.api.annotations.ParameterObject;
@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/address")

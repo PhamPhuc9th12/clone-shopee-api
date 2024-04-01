@@ -1,9 +1,10 @@
 package com.project.shoppeeclone.common;
 
 public final class Common {
-    public static final String USER = "USER";
+    public static final String USER = "USER_";
+    public static final String SHOP_IS_NOT_EXIST = "shop is not exist";
     public static final Boolean FALSE = false;
-    public static final String CAN_NOT_DO = "CAN'T DO THIS ACTION";
+    public static final String CAN_NOT_DO = "you can't do this action";
     public static final String USERNAME_IS_EXIST = "User name is exited";
     public static final String USER_NOT_FOUND = "User is not found";
     public static final String PASSWORD_IS_WRONG = "Password is wrong";

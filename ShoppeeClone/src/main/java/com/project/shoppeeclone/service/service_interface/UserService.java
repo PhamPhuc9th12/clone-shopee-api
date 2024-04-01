@@ -1,8 +1,7 @@
-package com.project.shoppeeclone.service.user;
+package com.project.shoppeeclone.service.service_interface;
 
 import com.project.shoppeeclone.dto.user.UpdateUserRequest;
 import com.project.shoppeeclone.dto.user.UserRequest;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface UserService {

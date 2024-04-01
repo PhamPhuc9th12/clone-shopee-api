@@ -1,4 +1,4 @@
-package com.project.shoppeeclone.service.user;
+package com.project.shoppeeclone.service.service_implement;
 
 import com.project.shoppeeclone.cloudinary.CloudinaryHelper;
 import com.project.shoppeeclone.common.Common;
@@ -7,6 +7,7 @@ import com.project.shoppeeclone.dto.user.UserRequest;
 import com.project.shoppeeclone.entity.UserEntity;
 import com.project.shoppeeclone.mapper.UserMapper;
 import com.project.shoppeeclone.repository.UserRepository;
+import com.project.shoppeeclone.service.service_interface.UserService;
 import com.project.shoppeeclone.token.TokenHelper;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public String signup(UserRequest userRequest) {
-        if(Boolean.TRUE.equals(userRepository.findByUserName(userRequest.getUserName()))){
+        if(Objects.nonNull(userRepository.findByUserName(userRequest.getUserName()))){
             throw new RuntimeException(Common.USERNAME_IS_EXIST);
         }
         String hasedPassword = BCrypt.hashpw(userRequest.getPassword(),BCrypt.gensalt());

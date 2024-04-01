@@ -28,7 +28,8 @@ create table tbl_address(
 create table tbl_category(
                              id bigserial primary key,
                              name varchar,
-                             image varchar
+                             image varchar,
+                             shop_id bigserial references tbl_shop(id)
 
 )
 
@@ -58,4 +59,28 @@ create table tbl_product(
                             comment_count bigserial,
                             cate_id bigserial references tbl_category(id),
                             shop_id bigserial references tbl_shop(id)
+)
+
+create table tbl_product_type(
+                                 id bigserial primary key,
+                                 name varchar,
+                                 product_id bigserial references tbl_product(id)
+)
+create table tbl_size(
+                                 id bigserial primary key,
+                                 name varchar,
+                                 description varchar
+)
+create table tbl_product_type_size_map(
+                                          id bigserial primary key,
+                                          price bigserial,
+                                          quantity bigserial,
+                                          is_sale boolean,
+                                          sale_percent bigserial,
+                                          sale_cost bigserial,
+                                          sale_start_time timestamp,
+                                          sale_end_time timestamp,
+                                          product_type_id bigserial references tbl_product_type(id),
+                                          size_id bigserial references tbl_size(id)
+
 )

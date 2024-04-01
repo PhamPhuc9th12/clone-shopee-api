@@ -1,22 +1,18 @@
-package com.project.shoppeeclone.service.address;
+package com.project.shoppeeclone.service.service_implement;
 
 import com.project.shoppeeclone.common.Common;
 import com.project.shoppeeclone.dto.address.AddressRequest;
 import com.project.shoppeeclone.dto.address.AddressResponse;
 import com.project.shoppeeclone.entity.AddressEntity;
-import com.project.shoppeeclone.entity.UserEntity;
 import com.project.shoppeeclone.mapper.AddressMapper;
 import com.project.shoppeeclone.repository.AddressRepository;
+import com.project.shoppeeclone.service.service_interface.AddressService;
 import com.project.shoppeeclone.token.TokenHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

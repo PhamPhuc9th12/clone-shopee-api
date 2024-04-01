@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.shoppeeclone.dto.user.UpdateUserRequest;
 import com.project.shoppeeclone.dto.user.UserRequest;
-import com.project.shoppeeclone.service.user.UserService;
+import com.project.shoppeeclone.service.service_interface.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
