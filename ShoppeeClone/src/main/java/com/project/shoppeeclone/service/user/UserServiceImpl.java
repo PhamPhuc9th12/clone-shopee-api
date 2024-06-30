@@ -2,6 +2,7 @@ package com.project.shoppeeclone.service.user;
 
 import com.project.shoppeeclone.cloudinary.CloudinaryHelper;
 import com.project.shoppeeclone.common.Common;
+import com.project.shoppeeclone.dto.response.UserResponse;
 import com.project.shoppeeclone.dto.user.UpdateUserRequest;
 import com.project.shoppeeclone.dto.user.UserRequest;
 import com.project.shoppeeclone.entity.UserEntity;
@@ -70,6 +71,16 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setImage(cloudinaryHelper.uploadFile(multipartFile));
         userRepository.save(userEntity);
+    }
+
+    @Override
+    public UserResponse getUserInformation(String accessToken) {
+        Long userId = TokenHelper.getUserIdFromToken(accessToken);
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(
+                () -> new RuntimeException(Common.USER_NOT_FOUND)
+        );
+        UserResponse userResponse = userMapper.getUserResponseFrom(userEntity);
+        return userResponse;
     }
 
 }
