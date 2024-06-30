@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         if(BCrypt.checkpw(userRequest.getPassword(),hashedPassword)){
             return TokenHelper.generateToken(userEntity);
         }else{
-            throw new RuntimeException(Common.PASSWORD_IS_WRONG);
+            throw new RuntimeException("Failed");
         }
     }
 
@@ -63,9 +63,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void updateInformation(String accessToken, UpdateUserRequest updateUserRequest, MultipartFile multipartFile) {
         Long userId = TokenHelper.getUserIdFromToken(accessToken);
-        UserEntity userEntity = userRepository.findById(userId).orElseThrow(
-                () -> new RuntimeException(Common.USER_NOT_FOUND)
-        );
+        UserEntity userEntity = userRepository.findById(userId).get();
         userMapper.updateUserInformation(userEntity,updateUserRequest);
         userEntity.setBirthday(OffsetDateTime.parse(updateUserRequest.getBirthdayString()));
 
