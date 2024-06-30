@@ -44,6 +44,14 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userEntity);
         return TokenHelper.generateToken(userEntity);
     }
+    @Override
+    public UserResponse getUserInformation(String accessToken) {
+        Long userId = TokenHelper.getUserIdFromToken(accessToken);
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(
+                () -> new RuntimeException("User not found!")
+        );
+        return userMapper.getUserResponseFrom(userEntity);
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -71,13 +79,6 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setImage(cloudinaryHelper.uploadFile(multipartFile));
         userRepository.save(userEntity);
-    }
-
-    @Override
-    public UserResponse getUserInformation(String accessToken) {
-        Long userId = TokenHelper.getUserIdFromToken(accessToken);
-        UserEntity userEntity = userRepository.findById(userId).get();
-        return userMapper.getUserResponseFrom(userEntity);
     }
 
 }
