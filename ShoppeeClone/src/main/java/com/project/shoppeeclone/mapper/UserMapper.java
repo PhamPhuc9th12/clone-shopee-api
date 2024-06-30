@@ -1,5 +1,6 @@
 package com.project.shoppeeclone.mapper;
 
+import com.project.shoppeeclone.dto.response.UserResponse;
 import com.project.shoppeeclone.dto.user.UpdateUserRequest;
 import com.project.shoppeeclone.dto.user.UserRequest;
 import com.project.shoppeeclone.entity.UserEntity;
@@ -10,4 +11,5 @@ import org.mapstruct.MappingTarget;
 public interface UserMapper {
     UserEntity getEntityFromInput(UserRequest userRequest);
     UserEntity updateUserInformation( @MappingTarget UserEntity userEntity, UpdateUserRequest updateUserRequest);
+    UserResponse getUserResponseFrom(UserEntity userEntity);
 }
