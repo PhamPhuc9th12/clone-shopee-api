@@ -76,9 +76,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse getUserInformation(String accessToken) {
         Long userId = TokenHelper.getUserIdFromToken(accessToken);
-        UserEntity userEntity = userRepository.findById(userId).orElseThrow(
-                () -> new RuntimeException(Common.USER_NOT_FOUND)
-        );
+        UserEntity userEntity = userRepository.findById(userId).get();
         UserResponse userResponse = userMapper.getUserResponseFrom(userEntity);
         return userResponse;
     }
