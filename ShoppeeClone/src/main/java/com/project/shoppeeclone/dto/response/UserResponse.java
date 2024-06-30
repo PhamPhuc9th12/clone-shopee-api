@@ -10,7 +10,7 @@ import lombok.*;
 public class UserResponse {
     private Long id;
     private String fullName;
-    private LocalDateTime birthdayString;
+    private String birthdayString;
     private String gender;
     private String email;
     private String phone;
