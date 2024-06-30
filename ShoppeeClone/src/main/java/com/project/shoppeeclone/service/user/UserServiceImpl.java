@@ -79,8 +79,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException(Common.USER_NOT_FOUND)
         );
-        UserResponse userResponse = userMapper.getUserResponseFrom(userEntity);
-        return userResponse;
+        return userMapper.getUserResponseFrom(userEntity);
     }
 
 }
