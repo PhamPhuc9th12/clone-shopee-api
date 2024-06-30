@@ -77,8 +77,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse getUserInformation(String accessToken) {
         Long userId = TokenHelper.getUserIdFromToken(accessToken);
         UserEntity userEntity = userRepository.findById(userId).get();
-        UserResponse userResponse = userMapper.getUserResponseFrom(userEntity);
-        return userResponse;
+        return userMapper.getUserResponseFrom(userEntity);
     }
 
 }
